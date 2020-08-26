@@ -6,15 +6,21 @@
     <title>Custom User</title>
   </head>
   <body>
-    {{ request.user.username }} {{ request.user.display_name}} {{ output }}
+    <div><h2>Username: {{ request.user.username }}</h2></div>
+    <div><h3>Display Name: {{ request.user.display_name}}</h3></div>
+    <div><h4>Output of settings.AUTH_USER_MODEL: {{ output }}</h4></div>
 
     <div>
       {% if request.user.is_authenticated %}
       <div>
-        {% if request.user.age > 21 %}
-        <p>You are over 21!</p>
+        {% if not request.user.age %}
+        <p>We wish you had told us how old you are :(</p>
+        {% elif request.user.age > 21 %}
+        <p>PS: You are over 21! Have a cocktail!</p>
         {% elif request.user.age == 21 %}
-        <p>You are 21 -- congratulations, you can now legally drink alcohol!</p>
+        <p>
+          PS: You are 21 -- congratulations, you can now legally drink alcohol!
+        </p>
         {% else %}
         <p>Put down that drink! You are under 21!</p>
         {% endif %}
