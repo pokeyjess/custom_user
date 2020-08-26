@@ -14,7 +14,7 @@
       {% if request.user.is_authenticated %}
       <div>
         {% if not request.user.age %}
-        <p>We wish you had told us how old you are :(</p>
+        <p>We wish you had chosen to tell us how old you are :(</p>
         {% elif request.user.age > 21 %}
         <p>PS: You are over 21! Have a cocktail!</p>
         {% elif request.user.age == 21 %}
