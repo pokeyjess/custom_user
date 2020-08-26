@@ -7,8 +7,18 @@
   </head>
   <body>
     {{ request.user.username }} {{ request.user.display_name}} {{ output }}
+
     <div>
       {% if request.user.is_authenticated %}
+      <div>
+        {% if request.user.age > 21 %}
+        <p>You are over 21!</p>
+        {% elif request.user.age == 21 %}
+        <p>You are 21 -- congratulations, you can now legally drink alcohol!</p>
+        {% else %}
+        <p>Put down that drink! You are under 21!</p>
+        {% endif %}
+      </div>
       <button>
         <a href="/logout/">Log Out</a>
       </button>

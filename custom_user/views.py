@@ -14,7 +14,7 @@ def signup_view(request):
         form = CustomUserForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            new_user = MyUser.objects.create_user(username=data.get("username"), password=data.get("password"), display_name=data.get("display_name"))
+            new_user = MyUser.objects.create_user(username=data.get("username"), password=data.get("password"), age=data.get("age"), display_name=data.get("display_name"))
             login(request, new_user)
             return HttpResponseRedirect(reverse("homepage"))
         
